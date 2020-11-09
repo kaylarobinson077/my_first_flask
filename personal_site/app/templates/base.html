@@ -1,0 +1,28 @@
+<html>
+    <head>
+        {% if title%}
+        <title>{{ title }} - Kayla Robinson</title>
+        {% else %}
+        <ttle>Kayla Robinson</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>
+        Kayla Robinson: 
+            <a href="{{ url_for("index") }}">Home</a>
+            <a href="{{ url_for("login") }}>Login</a>
+        </div>
+        <hr>
+        <!-- get_flashed_messages() clears out message list after run  -->
+        {% with messages = get_flashed_messages() %} <!-- set by flash -->
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
