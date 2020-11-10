@@ -1,4 +1,9 @@
-from app import app # flask app is member of app package
+from app import app, db # flask app is member of app package
+from app.models import User, Post
+
+@app.shell_context_processor
+def make_shell_context():
+    return {"db": db, "User": User, "Post": Post}
 
 # to run, in venv type
 # export FLASK_APP=personal_site.py
